@@ -92,7 +92,7 @@ public class DistractionQuestions : MonoBehaviour {
             {
                 if (Input.GetKeyDown("joystick button 5"))
                 {
-                    if (currentQuestion < 5)
+                    if (currentQuestion < 4)
                     {
                         Debug.Log("right trigger");
                         currentQuestion++;

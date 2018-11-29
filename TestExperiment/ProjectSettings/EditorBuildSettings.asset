@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ControlRoom.unity
+    guid: 4e16b50d9df571d4db5dc3cd7f9e3846
+  - enabled: 1
+    path: Assets/DistractionRoom.unity
+    guid: 01c809d58a60d1248967940125e8fc34
