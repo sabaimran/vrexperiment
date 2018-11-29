@@ -16,6 +16,10 @@ public class DistractionQuestions : MonoBehaviour {
     public Text response;
     public int currentQuestion;
     public int total;
+    public GameObject ball;
+    public AudioClip sheepSounds;
+    private AudioSource audioSource;
+    private bool goLeft;
 
     public bool submitted;
 
@@ -29,8 +33,17 @@ public class DistractionQuestions : MonoBehaviour {
     string[] answers = {"joystick button 3", "joystick button 2", "joystick button 0", "joystick button 2", "joystick button 1"};
     string[] responses = new string[5];
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = sheepSounds;
+        audioSource.volume = 0.5f;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    // Use this for initialization
+    void Start () {
         board.text = testQuestions[0];
         Debug.Log(responses[0] == null);
 	}
@@ -38,6 +51,28 @@ public class DistractionQuestions : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (Mathf.Abs(ball.transform.position.z) < 10)
+        {
+            if (goLeft)
+            {
+                ball.transform.position = ball.transform.position - new Vector3(0, 0, 0.09f);
+            }
+            else
+            {
+                ball.transform.position = ball.transform.position + new Vector3(0, 0, 0.09f);
+            }
+        }
+        else {
+            goLeft = !goLeft;
+            if (ball.transform.position.z >= 10)
+            {
+                ball.transform.position = new Vector3(ball.transform.position.x, ball.transform.position.y, 9.9f);
+            }
+            else
+            {
+                ball.transform.position = new Vector3(ball.transform.position.x, ball.transform.position.y, -9.9f);
+            }
+        }
         if (!submitted)
         {
             if (Input.GetKeyDown("joystick button 7"))
