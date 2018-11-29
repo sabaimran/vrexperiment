@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Questions : MonoBehaviour {
 
@@ -137,5 +138,12 @@ public class Questions : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            if (Input.GetKeyDown("joystick button 0"))
+            {
+                SceneManager.LoadScene("DistractionRoom");
+            }
+        } // else if pressed a, load distraction room.
     }
 }
